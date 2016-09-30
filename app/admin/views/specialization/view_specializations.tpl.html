@@ -1,0 +1,36 @@
+﻿<div class="container page-content-container">
+    <div ng-if="isAdministrator==='false'">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center;background-color:#fff">
+            <div class="not-ambassador-content">
+                <h1>
+                    <icon class="fa fa-ban" style="color:#FF0000"></icon>&nbsp;You do not have admin permissions.
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="isAdministrator==='true'">
+               
+        <div ng-hide="specializations.length || specializations.length < 1">
+            <div class="col-md-12" style="text-align: center;padding-bottom:15px;padding-top:50px;">
+                <div class="loader" style="display:inline-block"></div><div class="loader-text"><h2>Loading Specializations..</h2></div>
+            </div>
+        </div>
+
+        <div class="panel panel-success" ng-show="!loading">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>All Specializations</strong></h3>
+            </div>
+            <div class="panel-body">
+                <admin-specialization-directive ng-repeat="specialization in specializations" specialization="specialization"></admin-specialization-directive>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-warning" ng-click="createSpecialization()">Create Specialization</button>
+                <button class="btn btn-warning" ng-click="broadcast()">Broadcast</button>
+            </div>            
+        </div>
+    </div>
+</div>
+
+

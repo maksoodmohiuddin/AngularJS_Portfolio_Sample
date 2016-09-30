@@ -1,0 +1,14 @@
+﻿<div class="top-banner" style="background-image: url(/Content/images/Header_Specializations.png);">
+    <div class="container">
+        <h1>SPECIALIZATIONS</h1>
+    </div>
+</div>
+
+
+<div ng-hide="specializations.length || specializations.length < 1">
+    <div class="col-md-12" style="text-align: center;padding-bottom:15px;padding-top:50px;">
+        <div class="loader" style="display:inline-block"></div><div class="loader-text"><h2>Loading Specializations..</h2></div>
+    </div>
+</div>
+
+<join-specialization-directive index="$index" ng-repeat="spec in specializations" spec="spec"></join-specialization-directive>

@@ -1,0 +1,19 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-xs-2">
+            <div ng-show="specialization.iconUri">
+                <img ng-src="{{specialization.iconUri}}" class="icon" alt=" ">
+            </div>           
+        </div>
+        <div class="col-xs-8">
+            <div class="">Name:&nbsp;&nbsp;{{specialization.displayName}} </div>
+            <div class="">Description:&nbsp;&nbsp;{{specialization.description}} </div>
+        </div>
+        <div class="col-xs-2">
+            <button class="btn btn-warning" ng-click="manageSpecialization()">Manage</button>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,25 @@
+﻿<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Broadcast Notification</h3>
+    </div>
+
+    <div class="modal-body">
+        <div class="input-group input-group-sm col-lg-12">           
+            <input type="text" class="form-control" placeholder="Notification" ng-model="notificationMessage">
+        </div>
+        
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-success" ng-click="broadcast()">Broadcast</button>
+    </div>
+
+    <div class="row">
+        <div class="col-md-11">
+            <div class="well alert" ng-show="showMessage()">
+                {{message}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,250 @@
+﻿<link rel="stylesheet" href="/Content/styles/home.css" />
+<script type="text/javascript" src="/Vendor/bootstrap/js/carousel.js"></script>
+
+<!--- not ambassador view-->
+<div class="container-fluid no-padding" ng-show="isAmbassador==='false'">
+    <div class="row" id="splash-host">
+        <div class="container" style="position: relative; text-align: left;">
+
+            <h1>
+                <span style="color: #2dab11;">XBOX</span>
+                AMBASSADORS
+            </h1>
+            <div id="splash-laurel">
+
+                <span class="icon"><i class="fa fa-4x" id="rotating-icon"></i></span>
+            </div>
+            <h2>
+                <span style="position: absolute;">REWARDING OUR </span>
+                <span id="noun">ROLE MODELS</span>
+
+                <a class="long-button" style="float: right;" href="">
+                    GET STARTED
+                </a>
+                <a class="long-button white" style="float: right;" href="">
+                    LEARN MORE
+                </a>
+
+            </h2>
+        </div>
+    </div>
+
+
+    <div class="row content-row" id="first-content">
+        <div class="container">
+            <h2>
+                <i class="fa fa-gift"></i> Helpful people deserve rewards
+            </h2>
+
+            <div class="col-xs-12 col-sm-6" id="helpful-people">
+            </div>
+            <div class="col-xs-12 col-sm-6" style="vertical-align: top; font-size: 14pt;">
+                We're on a mission here at Xbox to reward those who are helpful, insightful, and passionate about our product. Those in the community that give back by leading, supporting, motivating and contributing deserve recognition.
+            </div>
+        </div>
+    </div>
+
+    <div class="row content-row" id="second-content">
+        <div class="container">
+            <h2>
+                <i class="fa fa-gear"></i> How it works
+            </h2>
+
+            <div class="col-xs-12 col-sm-6" style="vertical-align: top; font-size: 12pt;">
+
+
+                <h4>SPECIALIZATIONS</h4>
+                <p>Find something you're particularly passionate about, and enlist to be a part of that specialization.</p>
+                <h4>SEASONS</h4>
+                <p>
+                    With each new season, new specializations and missions become available. Compare yourself against your friends season over season, and strive to be the season winner!
+                </p>
+                <h4>TEIRS</h4>
+                <p>
+                    Each season grants an Ambassador the ability to reach the top teir for that season; each teir unlocking new rewards and activities.
+                </p>
+                <h4>MISSIONS</h4>
+                <p>
+                    Check back often for custom missions in each specialization that grant more rewards.
+                </p>
+                <h4>COMPETE</h4>
+                <p>
+                    Out do one another in helping the community and product. Compare your day to day stats with your friends as you rise up the leaderboard!
+                </p>
+                <p><a href="#"><i class="fa fa-question"></i> Read the FAQ </a></p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div id="how-it-works"></div>
+                <div id="helpfulness"></div>
+            </div>
+
+            <a href="#" style="float: right;" class="long-button">BECOME AN AMBASSADOR</a>
+        </div>
+    </div>
+
+    <div class="row content-row" id="third-content">
+        <div class="container">
+            <h2>
+                <i class="fa fa-heart"></i> The best ambassadors don't pay for Gold
+            </h2>
+
+
+            <div class="col-xs-12 col-sm-6" id="best">
+            </div>
+            <div class="col-xs-12 col-sm-6" style="vertical-align: top; font-size: 14pt;">
+                The best Ambassadors in the program likely won't be paying for Xbox Live Gold. If you're helping the community to such a high degree, it would be our pleasure to make it easier for you to play.
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!--- ambassador view  -->
+<div class="container-fluid no-padding" ng-show="isAmbassador==='true'">
+
+    <div class="row" id="carousel-row">
+
+        <div id="home-page-carousel" class="carousel slide" data-ride="carousel"
+             ng-controller="carouselController as carousel">
+
+            <ol class="carousel-indicators">
+                <li data-target="#home-page-carousel"
+                    ng-repeat="slide in carousel.slides"
+                    data-slide-to="{{$index}}"
+                    ng-class="{active: $first}"></li>
+            </ol>
+
+            <div class="carousel-inner" role="listbox">
+                <div class="item" ng-class="{active: $first, iconized: slide.style == 'icon'}"
+                     ng-repeat="slide in carousel.slides">
+
+                    <div ng-class="{container: (slide.style == 'icon')}">
+
+                        <a ng-href="{{ slide.redirect }}">
+                            <img ng-show="{{slide.imageUrl !== ''}}" ng-src="{{slide.imageUrl}}" alt="">
+                        </a>
+                        <div class="carousel-title">
+                            {{ slide.title }}
+                        </div>
+                        <div class="carousel-subtext">
+                            {{ slide.subText }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" id="second-row">
+        <div class="container">
+            <div class="col-xs-12 col-sm-6" style="font-size: 26pt;">
+
+                <div class="home-page-item">
+                    <a href="/missions">
+                        <i class="fa fa-3x fa-compass"></i>
+                        <span class="title">
+                            TAKE A MISSION
+                        </span>
+                    </a>
+                    <span class="sub-text">
+                        There are 7 missions available
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="home-page-item">
+                    <a href="/profile">
+                        <i class="fa fa-3x fa-bar-chart"></i>
+                        <span class="title">
+                            VIEW YOUR STATS
+                        </span>
+                    </a>
+                    <span class="sub-text">
+                        25% till next tier
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="third-row">
+        <div class="container">
+            <div class="col-xs-12 col-sm-6">
+                <div class="home-page-item">
+                    <a href="/academy">
+                        <i class="fa fa-3x fa-university"></i>
+                        <span class="title">
+                            LEARN MORE
+                        </span>
+                    </a>
+                    <span class="sub-text">
+                        at the Academy
+                    </span>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-6">
+
+                <div class="home-page-item">
+                    <a href="/lounge">
+                        <i class="fa fa-3x fa-comments"></i>
+                        <span class="title">
+                            HANG OUT
+                        </span>
+                    </a>
+                    <span class="sub-text">
+                        in the lounge
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-controller="newsController as news">
+
+        <div class="row" style="background-color: #107c10; color: #fff;">
+            <div class="container" id="news-container">
+                <h2>NEWS</h2>
+            </div>
+        </div>
+        <div class="row" id="news-row" ng-repeat="item in news.items"
+             ng-class="{alternateBack: (($index % 2) === 1)}">
+            <div class="container" id="news-container">
+
+
+                <blockquote class="news-item">
+                    <article>
+                                             
+                        <img ng-show="item.image !== ''" ng-src="{{item.image}}" alt="{{item.headline}}"
+                             ng-class="{ floatRight: (($index % 2) === 1), floatLeft: (($index % 2) === 0)}" />
+                        <h4>
+                            {{ item.headline | uppercase}} <br />
+                            <cite>{{ item.author }}, {{ item.publishDate | date:"longDate" }}</cite>
+                        </h4>                        
+                        <div class="news-content">{{ item.content |  limitTo: 500}}<span ng-show="item.content.length > 500">...<br /><a ng-href="/article/{{item.id}}"> Read More</a></span>
+                        </div>
+                        
+                    </article>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="background-color: #107c10; color: #fff;">
+        <div class="container">
+            <div data-ng-bind-html="homeContent" style="padding-top:10px;padding-bottom:10px;"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.carousel').carousel();
+        });
+    </script>
+</div>

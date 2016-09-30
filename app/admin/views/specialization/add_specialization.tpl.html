@@ -1,0 +1,32 @@
+﻿<div class="container page-content-container">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title"><strong>Create Specialization</strong></h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-3" style="width:960px">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" ng-model="specialization.displayName" style="width:100%" class="form-control" ng-trim="true" />
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    <input type="text" ng-model="specialization.description" style="width:100%" class="form-control" ng-trim="true" />
+                </div>                
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-warning" ng-click="createSpecialization()">Create</button>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="well alert" ng-show="showMessage()">
+                    {{message}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

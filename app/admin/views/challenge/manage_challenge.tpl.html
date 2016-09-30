@@ -1,0 +1,65 @@
+﻿<div class="container page-content-container">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title"><strong>Update challenge</strong></h3>
+        </div>
+        <div class="panel-body">    
+            <div class="form-group" ng-show="challenge.iconUri">
+                <img ng-src="{{challenge.iconUri}}" class=" icon" alt="">
+            </div>                                    
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" ng-model="challenge.displayName" class="form-control" ng-maxlength="100" ng-trim="true" />
+            </div>
+            <div class="form-group">
+                <label>Description:</label>
+                <input type="text" ng-model="challenge.description" class="form-control" ng-maxlength="250" ng-trim="true" />
+            </div>                
+            <div class="form-group">
+                <label>Threshold:</label>
+                <input type="number" ng-model="challenge.threshold" min="0" step="1" class="form-control" ng-trim="true" />
+            </div>
+            <div class="form-group">
+                <label>Effective Date:</label>
+                <input type="text" class="form-control" datepicker-popup="{{dateFormat}}" ng-model="challenge.effectiveDate" is-open="effectiveDateOpened"
+                        ng-click="effectiveDateOpened = true" min-date="minDate" ng-required="true" close-text="Close" ng-trim="true" placeholder="yyyy-mm-dd" />
+            </div>
+            <div class="form-group">
+                <label>Expiration Date:</label>
+                <input type="text" class="form-control" datepicker-popup="{{dateFormat}}" ng-model="challenge.expirationDate" is-open="expirationDateOpened"
+                        ng-click="expirationDateOpened = true" min-date="minDate" ng-required="true" close-text="Close" ng-trim="true" placeholder="yyyy-mm-dd" />
+            </div>     
+            <div class="form-group">
+                <label>Is Enabled:</label>
+                <input type="checkbox" ng-model="challenge.enabled" class="checkbox" />
+            </div>         
+            <div class="form-group">
+                <div class="panel panel-info" ng-show="activitiesForSpecialization.length">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Link/Unlink Specialization Activities To The Challenge</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <div class="gridStyle" ng-grid="availableActivitiesGrid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-warning" ng-click="updateChallenge()">Update</button>
+            <label class="btn btn-warning" for="file-selector">
+                <!--Angularjs does not support ng-model on "input-file" tags so you have to do it in a "native-way" that pass the all (eventually) selected files from the user.-->
+                <input id="file-selector" type="file" style="display:none;" onchange="angular.element(this).scope().uploadIcon(this.files)"> Upload Icon
+            </label> 
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="well alert" ng-show="showMessage()">
+                    {{message}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

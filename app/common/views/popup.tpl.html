@@ -1,0 +1,105 @@
+﻿<div>
+    <div class="modal-header">
+        <div class="close__modal_box" ng-click="close()">×</div>
+        <h3 class="modal-title">Xbox Ambassador Feedback</h3>
+    </div>
+    
+    <div class="modal-body">
+        </div>
+
+        <!--Pop-up-->
+    <center>
+        <div class="popScroll"></div>
+        <div class="popup">
+
+        </div>
+        <span class="ribbon top-left ribbon-primary">
+        </span>
+
+        <!--Content-->
+        <span class="top"></span>
+        <button class="close"
+                role="button"
+                ng-click="close()"></button>
+            
+        <!-- Rating System here-->
+        <h3>How can we improve ambassadors.xbox.com?</h3>
+        <h4 style="font-weight:normal">Send us your ideas and suggestions. </h4>
+
+
+        <form method="post" id="main-form" required ng-minlength="5">
+
+            <textarea required type="text"
+                      id="text-box"
+                      name="name"
+                      ng-model="description"></textarea><br />
+        </form>
+
+
+        <h3 style="margin: 10px 0px 10px;">How would you rate your experience?</h3>
+        <div>
+            <fieldset class="score">
+                <input type="radio"
+                       id="score-1"
+                       name="score"
+                       value="1"
+                       ng-model="score" />
+                <label title="1 stars" for="score-1">1</label>
+
+                <input type="radio"
+                       id="score-2"
+                       name="score"
+                       value="2"
+                       ng-model="score" />
+                <label title="2 stars" for="score-2">2</label>
+
+                <input type="radio"
+                       id="score-3"
+                       name="score"
+                       value="3"
+                       ng-model="score" />
+                <label title="3 stars" for="score-3">3</label>
+
+                <input type="radio"
+                       id="score-4"
+                       name="score"
+                       value="4"
+                       ng-model="score" />
+                <label title="4 stars" for="score-4">4</label>
+
+                <input type="radio"
+                       id="score-5"
+                       name="score"
+                       value="5"
+                       ng-model="score" />
+                <label title="5 stars" for="score-5">5</label>
+                
+              
+            </fieldset>
+        </div>
+       </center>
+        <!-- Upload File -->
+        <center>
+            <div class="file-upload" data-text="Select file!">
+                <input name="upload"
+                       type="file"
+                       id="files "
+                       class="upload" value="">
+            </div>
+            
+        </center>
+      
+        
+
+
+        <div class="modal-footer">
+            <button class="button"
+                    ng-click="submitFeedback()"
+                    ng-disabled="!description">
+                Submit
+            </button>
+        </div>
+
+</div>
+
+

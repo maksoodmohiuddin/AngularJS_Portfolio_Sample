@@ -1,0 +1,116 @@
+﻿
+
+<div class="challenge-row row-3 col-2-span-2" ng-class="{ even: !(index % 2), odd: !!(index % 2) }">
+    <div class="challenge-container">
+
+        <div class="challenge-imageWrapper" ng-if="challenge.iconUri">
+            <img src={{challenge.iconUri}}>
+            <div class="bold" style="padding-bottom: 10px;clear:both;text-align:center">
+                {{challenge.specializationDisplayName}}
+            </div>
+        </div>      
+        <div class="challenge-textWrapper">
+            <div style="width:80%">
+                <div class="featureTitle green">
+                    {{challenge.displayName}}
+                </div>
+
+                <!--Mission Accepted-->
+                <div ng-if="challenge.hasAccepted && !challenge.hasCompleted">
+                    <div class="h3 challengeHeading bold missionProgress">
+                        You have completed {{challenge.progress}} out of {{challenge.threshold}} activities.
+                    </div>
+                    <div class="challengeText" style="width:100%;clear:both;line-height: 1em;font-size:12px;font-style:italic">
+                        Last activity date: <span ng-if="challenge.lastActivityCompletedDate">{{challenge.lastActivityCompletedDate | date:'MMM d, y h:mm:ss a'}}</span><span ng-if="!challenge.lastActivityCompletedDate">not started</span>
+                    </div>
+                </div>
+
+                <div ng-if="challenge.hasCompleted">
+                    <div class="h3 challengeHeading bold missionProgress">
+                        Congratulations you have completed all {{challenge.threshold}} activities.
+                    </div>
+                    <div class="challengeText" style="width:100%;clear:both;line-height: 1em;font-size:12px;font-style:italic">
+                        Last activity date: <span ng-if="challenge.lastActivityCompletedDate">{{challenge.lastActivityCompletedDate | date:'MMM d, y h:mm:ss a'}}</span><span ng-if="!challenge.lastActivityCompletedDate">not started</span>
+                    </div>
+
+                    <div style="padding-top:40px;">
+                        <button class="button" ng-click="">CLAIM REWARD</button>
+                    </div>
+                </div>
+
+                <div style="clear:both"></div>
+                <div class="row col-2-span-2">
+                    <div class="challengeText challengeDescription" style="padding-bottom: 10px;padding-top:20px;width:100%">
+                        {{challenge.description}}
+                    </div>
+
+
+                    <div style="width:100%;float:left;">
+
+                        <div class="col-lg-4  challengeText" style="min-width:200px">
+                            <span class="bold">Start Date:</span>&nbsp;&nbsp;{{challenge.startDate | date:'MM/dd/yyyy'}}
+                        </div>
+
+
+
+                        <div class="col-lg-4 challengeText " style="min-width:200px">
+                            <span class="bold">End Date:</span>&nbsp;&nbsp;{{challenge.endDate | date:'MM/dd/yyyy'}}
+                        </div>
+
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+               
+
+                    <div class="row col-2-span-2" style="width:100%;padding-top: 20px">
+                        <a class="button" ng-model="collapsed" ng-click="collapsed=!collapsed" style="width:270px">
+                            <span ng-if="collapsed">- Hide Mission Activities</span>
+                            <span ng-if="!collapsed">+ View Mission Activities</span>
+                        </a>
+                        <div class="challengeText" style="width:100%;padding-top: 15px" ng-show="collapsed">
+                            <span class="challengeText bold">Available activities:</span><!--&nbsp;<a href="">(expand details)</a>--><br />
+                            <ul class="list-group">
+                                <li class="list-group-item challengeText" ng-repeat="activity in challenge.activities">
+                                    <div class="fa fa-arrow-circle-right" title="Requirements"></div>
+                                    {{activity.displayName}} <span ng-if="challenge.hasAccepted && !challenge.hasCompleted"><a ng-click="triggerTestEvent(activity, $index)" href="#">[test event]</a></span>&nbsp;
+                                    
+                                    <div ng-show="selected == $index && triggerEventSuccess" style="color:#107c10" class="fa fa fa-check fa-2"></div>
+                                    <div ng-show="selected == $index && triggerEventPending" style="color:black" class="fa fa fa-spinner"></div>
+                                    <div ng-show="selected == $index && triggerEventFailed" style="color:red" class="fa fa-minus-circle"></div>
+
+                                    <ul class="list-group">
+                                        <li class="list-group-item challengeText" style="padding-left:10px;">
+                                            <div class="fa fa-info-circle" style="color:#FF8C00"></div>
+                                            {{activity.description}}
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                <div class="row col-2-span-2" style="width:100%;">
+                    <div class="challengeText" style="width:100%;padding-top: 20px">
+                        <span class="challengeText bold">Available Rewards:</span>
+                        <ul class="list-group">
+                            <li class="list-group-item challengeText" style="padding-left:10px;">
+                                <div class="fa fa-gift" style=""></div> 200XP
+                            </li>
+                            <li class="list-group-item challengeText" style="padding-left:10px;">
+                                <div class="fa fa-gift" style=""></div> 10 <a href="https://www.earnbymicrosoft.com/">Microsoft Earn Points</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                    <div class="row col-2-span-2" style="padding-top: 7px;margin-right:10px;width: 80%;">
+                        <!--join button or check mark if joined or lock if request to join is pending-->
+                        <div style="padding-top:40px;float: right;" ng-if="!challenge.hasAccepted">
+                            <button class="button" ng-click="acceptChallenge(challenge)">Accept</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

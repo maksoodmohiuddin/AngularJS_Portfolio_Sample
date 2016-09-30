@@ -1,0 +1,110 @@
+﻿<div class="hero--short dark hero has-media">
+    <div class="media-wrapper media--short">
+        <div class="media-aspect">
+            <div class="media-offset">
+                <span class="media">
+                    <img alt="" src="https://content.halocdn.com/media/Default/games/halo-4/page/halo-4-hero-small-1920x350-76cce449cb934c34b5af78e007831acd.jpg" />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <div class="content-offset">
+            <div class="pageHeadContent">
+                <h1 class="text--largest">
+                    Missions
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div ng-if="isAmbassador==='false'">
+    <div class="row page-content-row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+            <div class="not-ambassador-content">
+                <h1>
+                    <icon class="fa fa-ban" style="color:#FF0000"></icon>&nbsp;In order to view missions, please join one or more <a href="/join">specializations</a>.
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ng-if="isAmbassador==='true'">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center;background-color:#fff" ng-if="userChallenges.length < 1">
+        <div class="not-ambassador-content">
+            <h1>
+                There are currently no missions.
+            </h1>
+        </div>
+    </div>
+
+
+
+    <div ng-hide="userChallenges.length || userChallenges.length < 1">
+        <div class="col-md-12" style="text-align: center;padding-bottom:15px;padding-top:50px;">
+            <div class="loader" style="display:inline-block"></div><div class="loader-text"><h2>Loading Missions..</h2></div>
+        </div>
+    </div>
+
+    <!--<div class="row">
+        <div class="col-md-12" style="text-align: center;height:50px;">
+            &nbsp;
+        </div>
+    </div>-->
+
+    <div ng-if="userChallenges.length > 0">
+
+        <div class="row" style="background-color: #f6f6f6;padding-bottom:12px;padding-top: 16px;">
+            <div class="col-lg-12 col-md-12" style="text-align:center">
+                <div class="challenge-container" style="text-align:left">
+                    <div class="challengeText" style="background-color: #f6f6f6; text-align:left;display: INLINE-BLOCK;">
+                        <!--<div class="filterLabel">Specialization:</div>-->
+                        <select class="filtersSelect form-control" ng-model="specializationDisplayName">
+                            <option value="">-- Specializations All --</option>
+                            <option ng-repeat="item in filterOptions" ng-value="item.specializationDisplayName">{{item.specializationDisplayName}}</option>
+                        </select>
+                    </div>
+                    <div class="challengeText" style="background-color: #f6f6f6; text-align:left;display: INLINE-BLOCK;">
+                        <!--<div class="filterLabel">Acceptance:</div>-->
+                        <select class="filtersSelect form-control" ng-model="hasAccepted">
+                            <option value="">-- Acceptance All --</option>
+                            <option value="true">Accepted</option>
+                            <option value="false">Not Accepted</option>
+                        </select>
+                    </div>
+                    <div class="challengeText" style="background-color: #f6f6f6; text-align:left;display: INLINE-BLOCK;">
+                        <!--<div class="filterLabel">Completion:</div>-->
+                        <select class="filtersSelect  form-control" ng-model="hasCompleted">
+                            <option value="">-- Completion All--</option>
+                            <option value="true">Completed</option>
+                            <option value="false">Not Completed</option>
+                        </select>
+                    </div>
+                    <div class="challengeText" style="background-color: #f6f6f6; text-align:left;display: INLINE-BLOCK;">
+                        <!--<div class="filterLabel">Order by:</div>-->
+                        <select class="filtersSelect  form-control" ng-model="lastActivityCompletedDate ">
+                            <option value="">-- Order by --</option>
+                            <option value="-lastActivityCompletedDate">Recent activity</option>
+                            <option value="lastActivityCompletedDate">Oldest activity</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: center">
+                <missions-tile-directive index="$index" ng-repeat="challenge in userChallenges | filter: specializationDisplayName | filter: {hasAccepted:hasAccepted} | filter: {hasCompleted:hasCompleted}" challenge="challenge"></missions-tile-directive>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

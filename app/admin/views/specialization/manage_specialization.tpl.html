@@ -1,0 +1,116 @@
+﻿<div class="container page-content-container">
+    
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title"><strong>Manage Specialization</strong></h3>
+        </div>
+        <div class="panel-body panel-body-background">
+            <div ng-show="loading">
+                <div class="col-md-12" style="text-align: center;padding-bottom:15px;padding-top:50px;">
+                    <div class="loader" style="display:inline-block"></div><div class="loader-text"><h2>Loading..</h2></div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Info</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group" ng-show="specialization.iconUri">
+                        <img ng-src="{{specialization.iconUri}}" class="icon" alt="">
+                    </div>                   
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" ng-model="specialization.displayName" class="form-control" ng-trim="true" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <input type="text" ng-model="specialization.description" class="form-control" ng-trim="true" />
+                    </div>
+                    <div class="form-group">
+                        <label>Is Public:</label>
+                        <input type="checkbox" ng-model="specialization.isPublic" class="checkbox" />
+                    </div>
+                    <div class="form-group">
+                        <label>Is Published:</label>
+                        <input type="checkbox" ng-model="specialization.isPublished" class="checkbox" ng-change="publishSpecializationdDialog()" />
+                    </div>
+                    <div class="row">
+                        <div class="well alert" ng-show="showMessageInfo()">
+                            {{messageInfo}}
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-warning" ng-click="updateSpecialization()">Update</button>
+                    <label class="btn btn-warning" for="file-selector">
+                        <!--Angularjs does not support ng-model on "input-file" tags so you have to do it in a "native-way" that pass the all (eventually) selected files from the user.-->
+                        <input id="file-selector" type="file" style="display:none;" onchange="angular.element(this).scope().uploadIcon(this.files)"> Upload Icon
+                    </label>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Activities</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <div class="gridStyle" ng-grid="specializationActivitiesGrid" ng-show="specialization.activities.length"></div>
+                        <div ng-hide="specialization.activities.length">No activites found.</div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-warning" ng-click="createActivity()">Create Activity</button>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Challenges</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <div class="gridStyle" ng-grid="specializationChallengesGrid" ng-show="specialization.challenges.length"></div>
+                        <div ng-hide="specialization.challenges.length">No challenges found.</div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-warning" ng-click="createChallenge()">Create Challenge</button>
+                </div>
+            </div>
+                       
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Requirements</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <div class="gridStyle" ng-grid="specializationRequirementsGrid" ng-show="requirementsForSpecialization.length"></div>
+                        <div ng-hide="requirementsForSpecialization.length">No Requirements found.</div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="well alert" ng-show="showMessageRequirement()">
+                        {{messageRequirement}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Rewards</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <div class="gridStyle" ng-grid="rewardsGrid" ng-show="rewards.length"></div>
+                        <div ng-hide="rewards.length">No Requirements found.</div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-warning" ng-click="createReward()">Create Reward</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
